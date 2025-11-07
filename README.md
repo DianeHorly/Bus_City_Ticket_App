@@ -44,12 +44,11 @@ Pour visualiser toutes les fonctionnalités et exécuter ce projet, vous aurez b
 
 ##   Commandes pour l'execution du projet
 0. Cloner la repository puis accéder au dossier du projet:
-    git clone https://github.com/DianeHorly/Bus_City_Ticket_App.git .
-   
-    cd Bus_City_App.
-    Créer un fichier .env : 
+    - git clone https://github.com/DianeHorly/Bus_City_Ticket_App.git .
+    - cd Bus_City_App.
+    *Créer un fichier .env : 
         cp .env.example .env
-    Et remplacer les clé stripe test par les votre.
+    *Et remplacer les clé stripe test par les votre.
 2. lancer le projet avec:
     pip3 install -r requirements.txt
     docker compose up --build
