@@ -3,9 +3,11 @@ Ce projet porte sur le creation d'une application de gestion de ticket de bus d'
 
 # Fonctionnalités:
 **0- MongoDB** pour le stockage des données.
+
 **1- Inscription et de connexion d'un utilisateur**:
 - Authentification / sessions via Flask-Login (login requis sur les vues sensibles).
 - Sécurité CSRF via Flask-WTF.
+  
 **2- Achat et validation de tickets(QR code):**
     Pour accéder à ces pages, un utilisateur doit etre connecté.
     - Achat de tickets (/tickets/buy) et liste des titres (/tickets/).
@@ -15,8 +17,10 @@ Ce projet porte sur le creation d'une application de gestion de ticket de bus d'
     - Détail d'un ticket avec QR code (/tickets/<id>, /tickets/<id>/qrcode.png)
     - Validation d'un ticket en deux étapes (start/confirm).
 
-**3- Un dashboard:** representant les statistiques sur les tickets ( actifs, expiré, en cours de valitaion)
+**3- Un dashboard:** representant les statistiques sur les tickets ( actifs, expiré, en cours de valitaion).
+
 **4- Page Carte (/stops/map) avec :**
+
 ***Sélecteur de villes:*** 
 - Affichage des marqueurs d'arrêts (nom, code, lien Détails).
 - Page Détails (/stops/<id>) d’un arrêt sélectionné.
@@ -40,10 +44,10 @@ Pour visualiser toutes les fonctionnalités et exécuter ce projet, vous aurez b
 
 ##   Commandes pour l'execution du projet
 0. Cloner la repository puis accéder au dossier du projet:
-    git clone https://
+    git clone https://github.com/DianeHorly/Bus_City_Ticket_App.git
     cd Bus_City_App
     []créer un fichier .env : 
-        cp app/.env.example app/.env
+        cp .env.example .env
     Et remplacer les clé stripe test par les votre.
 1. lancer le projet avec:
     pip3 install -r requirements.txt
