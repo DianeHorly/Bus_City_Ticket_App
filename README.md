@@ -12,8 +12,8 @@ Ce projet porte sur le creation d'une application de gestion de ticket de bus d'
     Pour accéder à ces pages, un utilisateur doit etre connecté.
     - Achat de tickets (/tickets/buy) et liste des titres (/tickets/).
       2 modes d'achat d'un ticket:
-      * Payement sans carte bancaire
-      * payement avec carte via stripe
+      - Payement sans carte bancaire.
+      - payement avec carte via stripe.
     - Détail d'un ticket avec QR code (/tickets/<id>, /tickets/<id>/qrcode.png)
     - Validation d'un ticket en deux étapes (start/confirm).
 
