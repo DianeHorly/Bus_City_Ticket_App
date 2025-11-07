@@ -44,24 +44,25 @@ Pour visualiser toutes les fonctionnalités et exécuter ce projet, vous aurez b
 
 ##   Commandes pour l'execution du projet
 0. Cloner la repository puis accéder au dossier du projet:
-    git clone https://github.com/DianeHorly/Bus_City_Ticket_App.git
-    cd Bus_City_App
-    []créer un fichier .env : 
+    git clone https://github.com/DianeHorly/Bus_City_Ticket_App.git .
+   
+    cd Bus_City_App.
+    Créer un fichier .env : 
         cp .env.example .env
     Et remplacer les clé stripe test par les votre.
-1. lancer le projet avec:
+2. lancer le projet avec:
     pip3 install -r requirements.txt
     docker compose up --build
-2.  Via votre navigateur, saissisez http://127.0.0.1:5000 pour acceder à l'application et explorer les différentes fonctionalités.
-3. Pour charger la liste de ville et arrets contenus dans le fichier json, saisissez:
+3.  Via votre navigateur, saissisez http://127.0.0.1:5000 pour acceder à l'application et explorer les différentes fonctionalités.
+4. Pour charger la liste de ville et arrets contenus dans le fichier json, saisissez:
     docker compose run --rm --entrypoint python importer `-m app.liste_ville.import_all_stop `/app/data/arrets.json `--clear
 
-4. Allez sur "http://127.0.0.1:5000/stops/cities" pour voir la liste json.
+5. Allez sur "http://127.0.0.1:5000/stops/cities" pour voir la liste json.
 
-5. ensuite pour ramener dans la base :
+6. ensuite pour ramener dans la base :
 
     docker compose exec -T mongo mongosh --quiet --eval "db.getSiblingDB('bus_city').stops.aggregate([{`$group:{ _id:'`$city', n:{`$sum:1}}},{`$sort:{ _id:1}}]).toArray()"
 
-6. Ouvrez la page /stops/map et choisisez une ville pour voir les marquers.
+7. Ouvrez la page /stops/map et choisisez une ville pour voir les marquers.
 
 
