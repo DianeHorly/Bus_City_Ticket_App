@@ -9,7 +9,6 @@ Ce projet porte sur le creation d'une application de gestion de ticket de bus d'
 - Sécurité CSRF via Flask-WTF.
   
 **2- Achat et validation de tickets(QR code):**
-
     Pour accéder à ces pages, un utilisateur doit etre connecté.
       - Achat de tickets (/tickets/buy) et liste des titres (/tickets/).
       2 modes d'achat d'un ticket:
