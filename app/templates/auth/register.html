@@ -1,0 +1,43 @@
+{#-- app/templates/auth/register.html -- #}
+
+{% extends "base.html" %}
+{% block title %}Créer un compte · Ticket Bus{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="h4 mb-3">Créer un compte</h1>
+
+        <form method="post" action="{{ url_for('auth.register', next=request.args.get('next')) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <!-- <input type="hidden" name="next" value="{{ request.args.get('next','') }}"> -->
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nom</label>
+              <input name="name" type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input name="email" type="email" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Mot de passe</label>
+              <input name="password" type="password" class="form-control" required minlength="6">
+            </div> 
+          </div>
+          <button class="btn btn-primary w-100">Créer mon compte</button>
+          
+        </form>
+
+        <hr>
+        <p class="mb-0">Déjà inscrit ?
+          <a href="{{ url_for('auth.login', next=request.args.get('next')) }}">Se connecter
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

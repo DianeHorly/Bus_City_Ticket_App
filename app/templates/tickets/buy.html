@@ -1,0 +1,147 @@
+{# app/templates/tickets/buy.html #}
+{% extends "base.html" %}
+{% block title %}Acheter des tickets{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
+
+<h1 class="h4 mb-3">Acheter des tickets</h1>
+
+<ul class="nav nav-tabs mb-4" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="tab-direct-btn" data-bs-toggle="tab" data-bs-target="#tab-direct" type="button" role="tab">
+      Achat direct sans CB
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="tab-card-btn" data-bs-toggle="tab" data-bs-target="#tab-card" type="button" role="tab">
+      Carte intégrée via Stripe
+    </button>
+  </li>
+  <!--<li class="nav-item" role="presentation">
+    <button class="nav-link" id="tab-checkout-btn" data-bs-toggle="tab" data-bs-target="#tab-checkout" type="button" role="tab">
+      Stripe Checkout
+    </button>
+  </li> -->
+</ul>
+
+<div class="tab-content">
+  {# -------  SANS CB : aucun visuel carte ------- #}
+  <div class="tab-pane fade show active" id="tab-direct" role="tabpanel" aria-labelledby="tab-direct-btn">
+    <form method="post" action="{{ url_for('tickets.buy_post') }}" class="row g-3">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="col-12 col-lg-6">
+        <label class="form-label">Type</label>
+        <select class="form-select" name="type">
+          <option value="single">Horaires (2h)</option>
+          <option value="day">Jour</option>
+          <option value="week">Semaine</option>
+          <option value="month">Mois</option>
+        </select>
+      </div>
+      <div class="col-12 col-lg-6">
+        <label class="form-label">Quantité</label>
+        <input name="qty" type="number" min="1" value="1" class="form-control">
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary">Acheter (sans CB)</button>
+      </div>
+    </form>
+  </div>
+
+  {# -------  CARTE INTÉGRÉE : visuel et iframes Stripe DANS la carte ------- #}
+  <div class="tab-pane fade" id="tab-card" role="tabpanel" aria-labelledby="tab-card-btn">
+    <div id="payments-root"
+         data-config-url="{{ url_for('payments.config') }}"
+         data-create-intent-url="{{ url_for('payments.create_payment_intent') }}"
+         data-create-checkout-url="{{ url_for('payments.create_checkout_session') }}"
+         data-csrf="{{ csrf_token() }}">
+      <!-- Carte stylisée : les iframes Stripe sont montées DEDANS -->
+      <div id="paycard" class="paycard mx-auto mb-4">
+        <div class="paycard__header">
+          <span class="paycard__brand">VISA CARD</span>
+          <span class="paycard__chip"></span>
+        </div>
+
+        <label class="paycard__label">Numéro de carte</label>
+        <div id="el-card-number" class="el-slot"></div>
+
+        <div class="row g-3 align-items-center mt-1">
+          <div class="col-12 col-md-5">
+            <label class="paycard__label">Titulaire</label>
+            <input id="cardholder-name" type="text"
+                   autocomplete="cc-name"
+                   class="el-input form-control"
+                   placeholder="Votre nom">
+          </div>
+          <div class="col-6 col-md-3">
+            <label class="paycard__label">Expire</label>
+            <div id="el-card-expiry" class="el-slot"></div>
+          </div>
+          <div class="col-6 col-md-4">
+            <label class="paycard__label">CVC</label>
+            <div id="el-card-cvc" class="el-slot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paramétrage des billets et bouton payer -->
+      <form id="card-form" class="row g-3" onsubmit="return false;">
+        <div class="col-12 col-lg-6">
+          <label class="form-label">Type</label>
+          <select id="card-type" class="form-select">
+            <option value="single">Horaires (2h)</option>
+            <option value="day">Jour</option>
+            <option value="week">Semaine</option>
+            <option value="month">Mois</option>
+          </select>
+        </div>
+        <div class="col-12 col-lg-6">
+          <label class="form-label">Quantité</label>
+          <input id="card-qty" type="number" min="1" value="1" class="form-control">
+        </div>
+
+        <div class="col-12">
+          <div id="card-errors" class="invalid-feedback d-block" style="min-height:1.25rem;"></div>
+        </div>
+
+        <div class="col-12">
+          <button id="card-pay" class="btn btn-primary w-100">Payer</button>
+        </div>
+      </form>
+
+      <p class="text-muted small mt-2">
+        Carte de test : 4242 4242 4242 4242 · 12/34 · 123
+      </p>
+    </div>
+  </div>
+
+  {# -------  CHECKOUT ------- #}
+  <div class="tab-pane fade" id="tab-checkout" role="tabpanel" aria-labelledby="tab-checkout-btn">
+    <div class="row g-3">
+      <div class="col-12 col-lg-6">
+        <label class="form-label">Type</label>
+        <select id="co-type" class="form-select">
+          <option value="single">Horaires (2h)</option>
+          <option value="day">Jour</option>
+          <option value="week">Semaine</option>
+          <option value="month">Mois</option>
+        </select>
+      </div>
+      <div class="col-12 col-lg-6">
+        <label class="form-label">Quantité</label>
+        <input id="co-qty" type="number" min="1" value="1" class="form-control">
+      </div>
+      <div class="col-12">
+        <button id="checkout-start" class="btn btn-dark">Payer avec Stripe Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="mt-3"><a href="{{ url_for('tickets.liste') }}"> Retour à mes tickets</a></p>
+
+<!-- Stripe.js et  JS correspondant-->
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='js/paiements.js') }}" defer></script>
+{% endblock %}

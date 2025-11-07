@@ -1,0 +1,103 @@
+/* app/static/css/card.css */
+
+/* Carte : visible partout (desktop et mobile) */
+.paycard {
+  width: 100%;
+  max-width: 520px;
+  margin-inline:auto;
+  border-radius: 18px;
+  padding: 20px;
+  background: linear-gradient(135deg, #052558 0%, #8b5cf6 100%);
+  /*color: #111;    */             /* labels en foncé */
+  box-shadow: 0 20px 40px rgba(31,41,55,0.25);
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;        /* permet de cliquer dans les iframes */
+}
+
+.paycard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.paycard__brand { 
+  font-weight: 700; 
+  letter-spacing: 2px; 
+  color: #3f0abb; 
+}
+.paycard__chip { 
+  width: 44px; 
+  height: 30px; 
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f59e0b, #facc15); 
+}
+
+.paycard__label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 10px 0 6px;
+  opacity: .95;
+  margin-bottom: 6px;
+  color: #0c0202;                 /* labels noirs */
+}
+
+/* Les slots qui accueillent les iframes Stripe */
+.el-slot {
+  background: #ffffff;            /* fond blanc  lisible */
+  border: 3px solid #010408;
+  border-radius: 12px;
+  height: 48px;  /* hauteur fixe type <input> */
+  min-height: 48px;
+  padding: 10px 12px;
+  display: flex;
+  align-items:center;
+  position: relative;
+  z-index: 1000;
+  isolation: isolate;            /* évite les effets de mélange hérités */
+  overflow: hidden;              /* pas d'overlay parasite */
+  color: black;
+  pointer-events:auto; 
+}
+
+/* Champ numéro un peu plus haut */
+#el-card-number{ 
+  height:56px; 
+}
+
+/* L'iframe remplit le slot */
+.el-slot iframe{ 
+  width:100% !important; 
+  height:100% !important; 
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+
+}
+
+/* Input nom du titulaire (HTML normal) */
+.el-input {
+  border-radius: 10px;
+}
+
+/* Les iframes Stripe prennent toute la place 
+.el-slot iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
+*/
+
+/* Texte lisible */
+.StripeElement, .el-slot{ 
+  color:#111 !important; 
+}
+.StripeElement--focus{ 
+  box-shadow:0 0 0 2px rgba(37, 11, 80, 0.25); 
+}
+
+/* Zone d'erreur */
+#card-errors { color: #b91c1c; }
+
+/* S'assurer qu'aucun ancien style ne bloque la saisie */
+.bc-card-3d, .stripe-control{ pointer-events:auto; } 

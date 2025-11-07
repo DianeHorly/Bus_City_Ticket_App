@@ -1,0 +1,148 @@
+{# app/templates/dashboard/index.html #}
+{% extends "base.html" %}
+{% block title %}Tableau de bord · Bus City{% endblock %}
+
+{% block content %}
+<h1 class="h4 mb-3">Tableau de bord</h1>
+
+<div class="row g-3 mb-3">
+  <div class="col-6 col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-muted small">Total</div>
+        <div class="display-6">{{ n_total }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-muted small">Actifs (non validés)</div>
+        <div class="display-6">{{ n_active }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-muted small">En cours</div>
+        <div class="display-6">{{ n_pending }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-muted small">Validés</div>
+        <div class="display-6">{{ n_validated }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-muted small">Expirés</div>
+        <div class="display-6">{{ n_expired }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm mb-3">
+  <div class="card-header fw-semibold">Abonnements actifs</div>
+  <div class="card-body">
+    {% if abonnements_actifs and abonnements_actifs|length > 0 %}
+      <div class="row g-3">
+        {% for t in abonnements_actifs %}
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="border rounded p-3 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <div class="text-capitalize fw-semibold">{{ t.type }}</div>
+              <a class="btn btn-sm btn-outline-primary" href="{{ url_for('tickets.affichage', ticket_id=t._id) }}">
+                Voir
+              </a>
+            </div>
+            <div class="small text-muted">
+              {% if t.expires_at %}
+                Expire le :
+                <time class="js-localtime"
+                  datetime="{{ t.expires_at.isoformat().replace('+00:00','Z') }}">
+                </time>
+              {% else %}
+                Non encore validé (pas d'expiration).
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-muted">Aucun abonnement actif pour le moment.</div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-header fw-semibold">Derniers tickets</div>
+  <div class="card-body p-0">
+    {% if derniers and derniers|length > 0 %}
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Ticket</th>
+              <th>Type</th>
+              <th>Statut</th>
+              <th>Acheté le</th>
+              <th>Expire le</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in derniers %}
+            <tr>
+              <td class="text-muted">{{ t._id }}</td>
+              <td class="text-capitalize">{{ t.type or "—" }}</td>
+              <td>
+                {% set etat = (t.validation_status or t.status) %}
+                {% if t.status == 'expired' %}
+                  <span class="badge bg-secondary">Expiré</span>
+                {% elif etat == 'validated' %}
+                  <span class="badge bg-success">Validé</span>
+                {% elif etat == 'pending' %}
+                  <span class="badge bg-warning text-dark">En cours</span>
+                {% else %}
+                  <span class="badge bg-primary">Actif</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if t.purchased_at %}
+                  <time class="js-localtime"
+                    datetime="{{ t.purchased_at.isoformat().replace('+00:00','Z') }}">
+                  </time>
+                {% else %} — {% endif %}
+              </td>
+              <td>
+                {% if t.expires_at %}
+                  <time class="js-localtime"
+                    datetime="{{ t.expires_at.isoformat().replace('+00:00','Z') }}">
+                  </time>
+                {% else %} — {% endif %}
+              </td>
+              <td class="text-end">
+                <a href="{{ url_for('tickets.affichage', ticket_id=t._id) }}" class="btn btn-sm btn-outline-secondary">
+                  Ouvrir
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="p-3 text-muted">Aucun ticket pour l'instant.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Arrêt - {{ s.name or "Sans nom" }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="">
+{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('arret_bus.map_by_city') }}"
+   class="btn btn-outline-secondary btn-sm mb-3"> Retour à la carte</a>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title mb-1">{{ s.name }}</h5>
+    <p class="mb-1"><strong>Code :</strong> {{ s.code or "—" }}</p>
+    <p class="mb-3"><strong>Ville :</strong> {{ s.city or "—" }}</p>
+
+    <div id="miniMap" style="height: 320px; border-radius: 8px;"></div>
+
+    {% if s.lines and s.lines|length %}
+      <hr/>
+      <div><strong>Lignes :</strong> {{ s.lines|join(", ") }}</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+{% endblock %}

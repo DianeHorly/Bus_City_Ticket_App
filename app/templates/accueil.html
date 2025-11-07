@@ -1,0 +1,13 @@
+{#-- app/templates/accueil.html --#}
+{% extends "base.html" %}
+{% block title %}Accueil · Bus City{% endblock %}
+{% block content %}
+<div class="p-5 bg-white rounded-3 shadow-sm">
+  <!-- Accroche: on explique la valeur en une phrase -->
+  <h1 class="mb-3">Achetez vos tickets de bus en quelques clics</h1>
+  <!-- Précision sur l’offre pour rassurer -->
+  <p class="text-muted mb-4">Tickets à l'unité, abonnements hebdo / mensuel / annuel, QR Code vérifiable.</p>
+  <!-- Appel à l'action principal. Même si l'achat est protégé, on laisse cliquer: Flask-Login redirigera vers /login. -->
+  <a class="btn btn-primary btn-lg" href="{{ url_for('tickets.buy') }}">Acheter un ticket</a>
+</div>
+{% endblock %}

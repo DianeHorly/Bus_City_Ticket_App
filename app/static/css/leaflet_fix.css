@@ -1,0 +1,23 @@
+/* Empêche les styles globaux (exp: img{width:100%}) de casser Leaflet */
+.leaflet-container img.leaflet-tile,
+.leaflet-container img.leaflet-marker-icon,
+.leaflet-container img.leaflet-marker-shadow,
+.leaflet-container img.leaflet-image-layer {
+  max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Taille explicite des tuiles */
+.leaflet-container .leaflet-tile {
+  width: 256px !important;
+  height: 256px !important;
+}
+
+/* Hauteur sûre pour le conteneur */
+#map {
+  height: 520px;
+  min-height: 320px;
+  border-radius: 8px;
+  overflow: hidden;
+}

@@ -1,0 +1,8 @@
+{# app/templates/paiements/success.html #}
+
+{% extends "base.html" %}
+{% block title %}Paiement réussi{% endblock %}
+{% block content %}
+  <div class="alert alert-success">Merci ! Votre paiement a été validé.</div>
+  <p><a class="btn btn-primary" href="{{ url_for('tickets.liste') }}">Voir mes tickets</a></p>
+{% endblock %}

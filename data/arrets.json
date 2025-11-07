@@ -1,0 +1,274 @@
+{
+  "cities": [
+    {
+      "city": "Paris",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "PAR-GARE", "lat": 48.8566, "lng": 2.3522 },
+        { "name": "Hôtel de Ville", "code": "PAR-HDV", "lat": 48.8596, "lng": 2.3552 },
+        { "name": "Université", "code": "PAR-UNIV", "lat": 48.8536, "lng": 2.3492 }
+      ]
+    },
+    {
+      "city": "Marseille",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "MRS-GARE", "lat": 43.2965, "lng": 5.3698 },
+        { "name": "Hôtel de Ville", "code": "MRS-HDV", "lat": 43.2995, "lng": 5.3728 },
+        { "name": "Université", "code": "MRS-UNIV", "lat": 43.2935, "lng": 5.3668 }
+      ]
+    },
+    {
+      "city": "Lyon",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "LYO-GARE", "lat": 45.7640, "lng": 4.8357 },
+        { "name": "Hôtel de Ville", "code": "LYO-HDV", "lat": 45.7670, "lng": 4.8387 },
+        { "name": "Université", "code": "LYO-UNIV", "lat": 45.7610, "lng": 4.8327 }
+      ]
+    },
+    {
+      "city": "Toulouse",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "TLS-GARE", "lat": 43.6047, "lng": 1.4442 },
+        { "name": "Hôtel de Ville", "code": "TLS-HDV", "lat": 43.6077, "lng": 1.4472 },
+        { "name": "Université", "code": "TLS-UNIV", "lat": 43.6017, "lng": 1.4412 }
+      ]
+    },
+    {
+      "city": "Nice",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "NCE-GARE", "lat": 43.7102, "lng": 7.2620 },
+        { "name": "Hôtel de Ville", "code": "NCE-HDV", "lat": 43.7132, "lng": 7.2650 },
+        { "name": "Université", "code": "NCE-UNIV", "lat": 43.7072, "lng": 7.2590 }
+      ]
+    },
+    {
+      "city": "Nantes",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "NTE-GARE", "lat": 47.2184, "lng": -1.5536 },
+        { "name": "Hôtel de Ville", "code": "NTE-HDV", "lat": 47.2214, "lng": -1.5506 },
+        { "name": "Université", "code": "NTE-UNIV", "lat": 47.2154, "lng": -1.5566 }
+      ]
+    },
+    {
+      "city": "Strasbourg",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "STR-GARE", "lat": 48.5734, "lng": 7.7521 },
+        { "name": "Hôtel de Ville", "code": "STR-HDV", "lat": 48.5764, "lng": 7.7551 },
+        { "name": "Université", "code": "STR-UNIV", "lat": 48.5704, "lng": 7.7491 }
+      ]
+    },
+    {
+      "city": "Montpellier",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "MPL-GARE", "lat": 43.6119, "lng": 3.8772 },
+        { "name": "Hôtel de Ville", "code": "MPL-HDV", "lat": 43.6149, "lng": 3.8802 },
+        { "name": "Université", "code": "MPL-UNIV", "lat": 43.6089, "lng": 3.8742 }
+      ]
+    },
+    {
+      "city": "Bordeaux",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "BOD-GARE", "lat": 44.8378, "lng": -0.5792 },
+        { "name": "Hôtel de Ville", "code": "BOD-HDV", "lat": 44.8408, "lng": -0.5762 },
+        { "name": "Université", "code": "BOD-UNIV", "lat": 44.8348, "lng": -0.5822 }
+      ]
+    },
+    {
+      "city": "Lille",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "LIL-GARE", "lat": 50.6292, "lng": 3.0573 },
+        { "name": "Hôtel de Ville", "code": "LIL-HDV", "lat": 50.6322, "lng": 3.0603 },
+        { "name": "Université", "code": "LIL-UNIV", "lat": 50.6262, "lng": 3.0543 }
+      ]
+    },
+    {
+      "city": "Rennes",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "REN-GARE", "lat": 48.1173, "lng": -1.6778 },
+        { "name": "Hôtel de Ville", "code": "REN-HDV", "lat": 48.1203, "lng": -1.6748 },
+        { "name": "Université", "code": "REN-UNIV", "lat": 48.1143, "lng": -1.6808 }
+      ]
+    },
+    {
+      "city": "Reims",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "REI-GARE", "lat": 49.2583, "lng": 4.0317 },
+        { "name": "Hôtel de Ville", "code": "REI-HDV", "lat": 49.2613, "lng": 4.0347 },
+        { "name": "Université", "code": "REI-UNIV", "lat": 49.2553, "lng": 4.0287 }
+      ]
+    },
+    {
+      "city": "Saint-Étienne",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "STE-GARE", "lat": 45.4397, "lng": 4.3872 },
+        { "name": "Hôtel de Ville", "code": "STE-HDV", "lat": 45.4427, "lng": 4.3902 },
+        { "name": "Université", "code": "STE-UNIV", "lat": 45.4367, "lng": 4.3842 }
+      ]
+    },
+    {
+      "city": "Toulon",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "TLN-GARE", "lat": 43.1242, "lng": 5.9280 },
+        { "name": "Hôtel de Ville", "code": "TLN-HDV", "lat": 43.1272, "lng": 5.9310 },
+        { "name": "Université", "code": "TLN-UNIV", "lat": 43.1212, "lng": 5.9250 }
+      ]
+    },
+    {
+      "city": "Grenoble",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "GRE-GARE", "lat": 45.1885, "lng": 5.7245 },
+        { "name": "Hôtel de Ville", "code": "GRE-HDV", "lat": 45.1915, "lng": 5.7275 },
+        { "name": "Université", "code": "GRE-UNIV", "lat": 45.1855, "lng": 5.7215 }
+      ]
+    },
+    {
+      "city": "Dijon",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "DIJ-GARE", "lat": 47.3220, "lng": 5.0415 },
+        { "name": "Hôtel de Ville", "code": "DIJ-HDV", "lat": 47.3250, "lng": 5.0445 },
+        { "name": "Université", "code": "DIJ-UNIV", "lat": 47.3190, "lng": 5.0385 }
+      ]
+    },
+    {
+      "city": "Angers",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "ANG-GARE", "lat": 47.4784, "lng": -0.5632 },
+        { "name": "Hôtel de Ville", "code": "ANG-HDV", "lat": 47.4814, "lng": -0.5602 },
+        { "name": "Université", "code": "ANG-UNIV", "lat": 47.4754, "lng": -0.5662 }
+      ]
+    },
+    {
+      "city": "Nîmes",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "NIM-GARE", "lat": 43.8367, "lng": 4.3601 },
+        { "name": "Hôtel de Ville", "code": "NIM-HDV", "lat": 43.8397, "lng": 4.3631 },
+        { "name": "Université", "code": "NIM-UNIV", "lat": 43.8337, "lng": 4.3571 }
+      ]
+    },
+    {
+      "city": "Clermont-Ferrand",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "CLF-GARE", "lat": 45.7772, "lng": 3.0870 },
+        { "name": "Hôtel de Ville", "code": "CLF-HDV", "lat": 45.7802, "lng": 3.0900 },
+        { "name": "Université", "code": "CLF-UNIV", "lat": 45.7742, "lng": 3.0840 }
+      ]
+    },
+    {
+      "city": "Le Havre",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "LEH-GARE", "lat": 49.4944, "lng": 0.1079 },
+        { "name": "Hôtel de Ville", "code": "LEH-HDV", "lat": 49.4974, "lng": 0.1109 },
+        { "name": "Université", "code": "LEH-UNIV", "lat": 49.4914, "lng": 0.1049 }
+      ]
+    },
+    {
+      "city": "Saint-Denis",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "SDN-GARE", "lat": 48.9362, "lng": 2.3574 },
+        { "name": "Hôtel de Ville", "code": "SDN-HDV", "lat": 48.9392, "lng": 2.3604 },
+        { "name": "Université", "code": "SDN-UNIV", "lat": 48.9332, "lng": 2.3544 }
+      ]
+    },
+    {
+      "city": "Aix-en-Provence",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "AIX-GARE", "lat": 43.5297, "lng": 5.4474 },
+        { "name": "Hôtel de Ville", "code": "AIX-HDV", "lat": 43.5327, "lng": 5.4504 },
+        { "name": "Université", "code": "AIX-UNIV", "lat": 43.5267, "lng": 5.4444 }
+      ]
+    },
+    {
+      "city": "Brest",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "BES-GARE", "lat": 48.3904, "lng": -4.4861 },
+        { "name": "Hôtel de Ville", "code": "BES-HDV", "lat": 48.3934, "lng": -4.4831 },
+        { "name": "Université", "code": "BES-UNIV", "lat": 48.3874, "lng": -4.4891 }
+      ]
+    },
+    {
+      "city": "Limoges",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "LIM-GARE", "lat": 45.8336, "lng": 1.2611 },
+        { "name": "Hôtel de Ville", "code": "LIM-HDV", "lat": 45.8366, "lng": 1.2641 },
+        { "name": "Université", "code": "LIM-UNIV", "lat": 45.8306, "lng": 1.2581 }
+      ]
+    },
+    {
+      "city": "Tours",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "TRS-GARE", "lat": 47.3941, "lng": 0.6848 },
+        { "name": "Hôtel de Ville", "code": "TRS-HDV", "lat": 47.3971, "lng": 0.6878 },
+        { "name": "Université", "code": "TRS-UNIV", "lat": 47.3911, "lng": 0.6818 }
+      ]
+    },
+    {
+      "city": "Amiens",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "AMI-GARE", "lat": 49.8941, "lng": 2.2957 },
+        { "name": "Hôtel de Ville", "code": "AMI-HDV", "lat": 49.8971, "lng": 2.2987 },
+        { "name": "Université", "code": "AMI-UNIV", "lat": 49.8911, "lng": 2.2927 }
+      ]
+    },
+    {
+      "city": "Metz",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "MTZ-GARE", "lat": 49.1193, "lng": 6.1757 },
+        { "name": "Hôtel de Ville", "code": "MTZ-HDV", "lat": 49.1223, "lng": 6.1787 },
+        { "name": "Université", "code": "MTZ-UNIV", "lat": 49.1163, "lng": 6.1727 }
+      ]
+    },
+    {
+      "city": "Perpignan",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "PER-GARE", "lat": 42.6887, "lng": 2.8948 },
+        { "name": "Hôtel de Ville", "code": "PER-HDV", "lat": 42.6917, "lng": 2.8978 },
+        { "name": "Université", "code": "PER-UNIV", "lat": 42.6857, "lng": 2.8918 }
+      ]
+    },
+    {
+      "city": "Besançon",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "BSN-GARE", "lat": 47.2378, "lng": 6.0241 },
+        { "name": "Hôtel de Ville", "code": "BSN-HDV", "lat": 47.2408, "lng": 6.0271 },
+        { "name": "Université", "code": "BSN-UNIV", "lat": 47.2348, "lng": 6.0211 }
+      ]
+    },
+    {
+      "city": "Orléans",
+      "clear": true,
+      "stops": [
+        { "name": "Gare Centrale", "code": "ORL-GARE", "lat": 47.9025, "lng": 1.9090 },
+        { "name": "Hôtel de Ville", "code": "ORL-HDV", "lat": 47.9055, "lng": 1.9120 },
+        { "name": "Université", "code": "ORL-UNIV", "lat": 47.8995, "lng": 1.9060 }
+      ]
+    }
+  ]
+}

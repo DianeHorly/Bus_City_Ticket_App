@@ -1,0 +1,8 @@
+{#  app/templates/paiements/cancel.html #}
+
+{% extends "base.html" %}
+{% block title %}Paiement annulé{% endblock %}
+{% block content %}
+  <div class="alert alert-warning">Paiement annulé. Vous pouvez réessayer.</div>
+  <p><a class="btn btn-secondary" href="{{ url_for('tickets.buy') }}">Retour à l'achat</a></p>
+{% endblock %}

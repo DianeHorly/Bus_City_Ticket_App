@@ -1,0 +1,81 @@
+
+services:
+  mongo:
+    image: mongo:8
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      # On "ping" Mongo toutes les 5s. Tant que c'est KO, Flask n'essaie pas de se connecter.
+      # Cela evite le crash au boot si Mongo n'est pas prêt
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"   # MQTT TCP (pour flask et paho)
+      - "9001:9001"   # MQTT via WebSocket (Pour l' UI web)
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    healthcheck:
+      test: ["CMD", "mosquitto_sub", "-t", "$$SYS/broker/version", "-C", "1", "-h", "localhost"]
+      interval: 5s
+      timeout: 4s
+      retries: 10
+
+  flask_app:
+    build: .
+    ports:
+      - "${FLASK_PORT:-5000}:5000"
+    environment:
+      # Flask
+      - SECRET_KEY=${SECRET_KEY}
+      - FLASK_ENV=development
+      # Mongo
+      - MONGO_URI=${MONGO_URI}
+      ## MQTT (noms attendus par paho dans le code)
+      - MQTT_HOST=mosquitto      # <-- nom du service docker, pas localhost
+      - MQTT_PORT=1883
+      - MQTT_URL=mqtt://mosquitto:1883
+      - START_MQTT=${START_MQTT:-0}   # 1 pour activer, 0 pour désactiver
+      # STRIPE
+      - STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+      - STRIPE_SUCCESS_URL=${STRIPE_SUCCESS_URL}
+      - STRIPE_CANCEL_URL=${STRIPE_CANCEL_URL}
+      # Prix ( price_id ou montants)
+      - STRIPE_PRICE_SINGLE=${STRIPE_PRICE_SINGLE}
+      - STRIPE_PRICE_DAY=${STRIPE_PRICE_DAY}
+      - STRIPE_PRICE_WEEK=${STRIPE_PRICE_WEEK}
+      - STRIPE_PRICE_MONTH=${STRIPE_PRICE_MONTH}
+      - STRIPE_CURRENCY=${STRIPE_CURRENCY}   # ou websockets si tu veux parler en WS
+    depends_on:
+      mongo:
+        condition: service_healthy   # attend que Mongo réponde
+      mosquitto:
+        condition: service_healthy  
+    volumes:
+      - ./data:/app/data
+
+  # pour importer les villes/arrêts depuis /app/data/arrets.json
+  importer:
+    build: .
+    command: ["python", "/app/liste_ville/import_all_stop.py", "/app/data/arrets.json"]
+    environment:
+      - MONGO_URI=${MONGO_URI}
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+    restart: "no" 
+
+volumes:
+  mongo_data:

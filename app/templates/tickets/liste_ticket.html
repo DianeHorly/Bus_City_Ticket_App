@@ -1,0 +1,40 @@
+{# app/templates/tickets/liste_ticket.html #}
+{% extends "base.html" %}
+{% block title %}Mes tickets · Bus City{% endblock %}
+{% block content %}
+<h1 class="h4 mb-3">Mes tickets</h1>
+
+<div class="card shadow-sm">
+  <div class="table-responsive">
+    <table class="table align-middle mb-0">
+      <thead>
+        <tr><th>Type</th><th>Statut</th><th>Expiration</th><th class="text-end">Action</th></tr>
+      </thead>
+      <tbody>
+      {% for t in tickets %}
+        {% set raw = t.validation_status or t.status %}
+        {% set etat = 'Expiré' if t.status == 'expired' else raw %}
+        <tr class="{% if t.status=='expired' %}table-light{% endif %}">
+          <td class="text-capitalize">{{ t.type or '—' }}</td>
+          <td>
+            {% if etat == 'validated' %}
+              <span class="badge bg-success">Validé</span>
+            {% elif etat == 'pending' %}
+              <span class="badge bg-warning text-dark">En cours</span>
+            {% elif t.status == 'expired' %}
+              <span class="badge bg-secondary">Expiré</span>
+            {% else %}
+              <span class="badge bg-primary">Actif</span>
+            {% endif %}
+          </td>
+          <td>{{ (t.expires_at or None) and t.expires_at.strftime("%d/%m/%Y %H:%M") or "—" }}</td>
+          <td class="text-end">
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('tickets.affichage', ticket_id=t._id) }}">Ouvrir</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

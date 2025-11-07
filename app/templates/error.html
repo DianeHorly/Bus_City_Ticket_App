@@ -1,0 +1,13 @@
+{# -- app/templetes/error.html -- #}
+
+{% extends "base.html" %}
+{% block title %}Erreur . Bus City{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <!-- Message concis: l'utilisateur comprend que c'est temporaire, pas sa faute -->
+  <h1 class="display-6">Oups.......</h1>
+  <p class="lead">{{ message or "Une erreur est survenue. Réessayez dans un instant." }}</p>
+  <!-- On propose une sortie (retour à l'accueil) -->
+  <a class="btn btn-primary" href="{{ url_for('accueil.index') }}">Retour à l'accueil</a>
+</div>
+{% endblock %}

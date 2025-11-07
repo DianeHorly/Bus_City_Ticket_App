@@ -1,0 +1,48 @@
+{# app/templates/arret_bus/index.html #}
+
+{% extends "base.html" %}
+{% block title %}Arrêts de bus{% endblock %}
+
+{% block content %}
+<h1 class="h4 mb-3">Arrêts de bus</h1>
+
+<form method="get" class="mb-3">
+  <div class="input-group">
+    <input name="q" class="form-control" placeholder="Rechercher un arrêt (nom, code, ville)"
+           value="{{ q or '' }}">
+    <button class="btn btn-primary">Rechercher</button>
+  </div>
+</form>
+
+{% if stops and stops|length %}
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Code</th>
+          <th>Ville</th>
+          <th>Coordonnées</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in stops %}
+          {% set coords = (s.loc and s.loc.coordinates) or [] %}
+          <tr>
+            <td>{{ s.name }}</td>
+            <td><code>{{ s.code }}</code></td>
+            <td>{{ s.city }}</td>
+            <td>
+              {% if coords and coords|length==2 %}
+                lon {{ '%.5f'|format(coords[0]) }}, lat {{ '%.5f'|format(coords[1]) }}
+              {% else %} — {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <div class="alert alert-info">Aucun arrêt trouvé.</div>
+{% endif %}
+{% endblock %}

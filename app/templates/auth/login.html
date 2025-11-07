@@ -1,0 +1,37 @@
+{# -- app/templates/auth/login.html -- #}
+
+{% extends "base.html" %}
+{% block title %}Connexion · Bus City{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="h4 mb-3">Se connecter</h1>
+
+        <form method="post" action="{{ url_for('auth.login', next=(request.args.get('next') or '')) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          {% if request.args.get('next') %}
+            <input type="hidden" name="next" value="{{request.args.get('next','')}}"> 
+            {# <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> #}
+          {% endif %}
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mot de passe</label>
+            <input name="password" type="password" class="form-control" required>
+          </div>
+
+          <button class="btn btn-primary w-100">Connexion</button>
+        </form>
+
+        <hr>
+        <p class="mb-0">Pas de compte ? <a href="{{ url_for('auth.register', next=request.args.get('next')) }}">Inscrivez-vous</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

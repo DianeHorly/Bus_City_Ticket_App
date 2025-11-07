@@ -1,0 +1,96 @@
+/* app/static/css/style.css */
+/* lire l'interface sans casser Bootstrap *
+body { scroll-behavior: smooth; }
+
+/* Petits arrondis pour un look plus doux *
+.card { border-radius: 1rem; }
+.btn { border-radius: .8rem; }
+.navbar-brand { letter-spacing: .5px; }
+*/
+/* static/css/style.css */
+.card { border: 0; border-radius: 1rem; }
+.card .card-body { padding: 1.25rem 1.25rem; }
+.table thead th { font-weight: 600; }
+.badge { font-size: 0.85rem; }
+
+
+/* --- Buy page --- */
+.buy-wrapper { max-width: 980px; }
+
+.pay-card {
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,.04);
+}
+.pay-card-body { padding: 20px; }
+.pay-card-footer {
+  padding: 12px 20px;
+  border-top: 1px solid rgba(0,0,0,.06);
+  background: linear-gradient(180deg, #fafbff, #f7f9ff);
+  border-radius: 0 0 16px 16px;
+}
+
+.pay-aside {
+  border: 1px dashed rgba(0,0,0,.15);
+  border-radius: 16px;
+  padding: 16px;
+  background: #fcfcfe;
+}
+
+/* Tuiles de type de ticket */
+.ticket-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+.type-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+  transition: all .18s ease;
+}
+.type-tile:hover {
+  border-color: rgba(0,0,0,.25);
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.type-tile input[type="radio"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.type-tile .tile-title { font-weight: 600; }
+.type-tile .tile-sub { font-size: .85rem; color: #6c757d; }
+
+.type-tile input[type="radio"]:checked ~ .tile-title,
+.type-tile input[type="radio"]:checked ~ .tile-sub {
+  color: #0d6efd;
+}
+.type-tile:has(input[type="radio"]:checked) {
+  border-color: #0d6efd;
+  background: #f3f8ff;
+}
+
+/* Stripe Elements field */
+.stripe-card {
+  padding: 12px 14px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  background: #fff;
+}
+.stripe-card.StripeElement--focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13,110,253,.15);
+}
+
+/* Small tweak for tabs */
+.nav-pills .nav-link {
+  border-radius: 9999px;
+}
